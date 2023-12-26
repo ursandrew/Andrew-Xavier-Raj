@@ -1,0 +1,36 @@
+clc;
+clear ALL;
+ 
+Atom_Num=50;
+Max_Iteration=10;
+tic
+Function_name='F2';
+[Low,Up,Dim,fobj] = Get_Functions_details(Function_name);
+[cg_curve,gBestScore,gBest]=ASOPSO(Atom_Num,Max_Iteration,Low,Up,Dim,fobj);% ASO PSO
+% N_Runs = 30; % Number of Runs
+% 
+% for i=1:N_Runs
+% [X_Best,Fit_XBest,His_Fit]=ASO(Atom_Num,Max_Iteration,Low,Up,Dim,fobj); % ASO
+% [cg_curve,gBestScore,gBest]=ASOPSO(Atom_Num,Max_Iteration,Low,Up,Dim,fobj);% ASO PSO
+% STAT(:,i)=Fit_XBest;
+% STAT1(:,i)=gBestScore;
+% end
+% 
+% Min1=min(STAT(:,:));
+% Mean1=mean(STAT(:,:)); 
+% STD1=std(STAT(:,:));
+% 
+% Min2=min(STAT1(:,:));
+% Mean2=mean(STAT1(:,:)); 
+% STD2=std(STAT1(:,:)); 
+
+
+% display(['The best fitness is: ', num2str(Fit_XBest)]);
+display(['The best fitness is: ', num2str(gBest)]);
+
+subplot(1,1,1)
+semilogy(His_Fit,'LineWidth',2,'Color','b')
+hold on
+semilogy(cg_curve,'LineWidth',2,'Color','r')
+hold on
+toc
